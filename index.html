@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eram Tafsir — Applied Economist &amp; Analytics Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A4A;
+    --paper:#F7F4EE;
+    --paper-2:#FBF9F4;
+    --bronze:#B8935F;
+    --slate:#4A5568;
+    --line:#DCD6C8;
+    --ink:#1A1F2B;
+
+    --display: 'Source Serif 4', Georgia, serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ===== EDITABLE ZONE NOTE =====
+     Search for [EDIT] comments throughout to find content blocks
+     that are easy to swap: name, summary text, jobs, links, etc.
+  */
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: rgba(247,244,238,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    list-style:none;
+  }
+  .nav-links a{
+    font-size: 13px;
+    text-decoration:none;
+    color: var(--slate);
+    font-family: var(--mono);
+    letter-spacing: 0.03em;
+    transition: color .15s ease;
+  }
+  .nav-links a:hover{ color: var(--navy); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 88px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 22px;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before{
+    content:'';
+    display:inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--bronze);
+  }
+  h1{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    max-width: 14ch;
+  }
+  .hero-role{
+    margin-top: 18px;
+    font-size: 1.05rem;
+    color: var(--slate);
+    max-width: 56ch;
+  }
+  .hero-summary{
+    margin-top: 22px;
+    font-size: 1rem;
+    color: var(--ink);
+    max-width: 62ch;
+  }
+  .hero-summary strong{ color: var(--navy); font-weight: 600; }
+
+  .hero-tags{
+    margin-top: 28px;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    padding: 6px 12px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-links{
+    margin-top: 36px;
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration:none;
+    border: 1px solid var(--navy);
+    transition: all .15s ease;
+  }
+  .btn-primary{
+    background: var(--navy);
+    color: var(--paper);
+  }
+  .btn-primary:hover{
+    background: #18365C;
+  }
+  .btn-ghost{
+    color: var(--navy);
+    background: transparent;
+  }
+  .btn-ghost:hover{
+    background: var(--navy);
+    color: var(--paper);
+  }
+
+  /* Sparkline / signature visual */
+  .spark{
+    margin-top: 56px;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    display:flex;
+    align-items:flex-end;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+  .spark-item{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--slate);
+    letter-spacing: 0.04em;
+  }
+  .spark-item b{
+    display:block;
+    font-family: var(--display);
+    font-size: 1.6rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 36px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+  }
+  .eyebrow .num{ color: var(--navy); }
+  .eyebrow::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+  h2{
+    font-family: var(--display);
+    font-size: 1.9rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .job{
+    margin-bottom: 44px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+  }
+  .job:last-child{ margin-bottom: 0; }
+  .job-meta{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.8;
+  }
+  .job-meta .period{
+    color: var(--bronze);
+    font-weight: 500;
+  }
+  .job-title{
+    font-family: var(--display);
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .job-org{
+    font-size: 0.95rem;
+    color: var(--slate);
+    margin-bottom: 12px;
+  }
+  .job ul{
+    list-style: none;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap: 9px;
+  }
+  .job li{
+    font-size: 0.95rem;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .job li::before{
+    content:'—';
+    position:absolute;
+    left:0;
+    color: var(--bronze);
+  }
+
+  @media (max-width: 680px){
+    .job{ grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px 40px;
+  }
+  .skill-group h3{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-group p{
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    display:flex;
+    flex-direction:column;
+    gap: 22px;
+  }
+  .project{
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    border-radius: 4px;
+    padding: 24px 26px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .project:hover{
+    border-color: var(--bronze);
+    transform: translateY(-2px);
+  }
+  .project-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .project-title{
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .project-title .featured{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--bronze);
+    border: 1px solid var(--bronze);
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+  .project-year{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--slate);
+    white-space: nowrap;
+  }
+  .project p{
+    font-size: 0.93rem;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .project-link{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bronze);
+    padding-bottom: 1px;
+  }
+  .project-link:hover{ color: var(--bronze); }
+
+  /* ---------- AI INTEREST CALLOUT ---------- */
+  .callout{
+    border-left: 3px solid var(--bronze);
+    padding: 4px 0 4px 22px;
+    margin-top: 40px;
+  }
+  .callout p{
+    font-size: 0.95rem;
+    color: var(--slate);
+    max-width: 64ch;
+  }
+  .callout strong{ color: var(--navy); }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid{
+    display:grid;
+    gap: 20px;
+  }
+  .edu-item{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .edu-item:last-child{ border-bottom: none; padding-bottom:0; }
+  .edu-name{
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .edu-degree{
+    font-size: 0.9rem;
+    color: var(--slate);
+  }
+  .edu-year{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--bronze);
+  }
+  .edu-honor{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+
+  /* ---------- WRITING ---------- */
+  .writing-link{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: color .15s ease;
+  }
+  .writing-link:first-child{ padding-top:0; }
+  .writing-link:last-child{ border-bottom:none; }
+  .writing-link:hover{ color: var(--bronze); }
+  .writing-link .wt{
+    font-size: 0.98rem;
+    font-weight: 500;
+    max-width: 70%;
+  }
+  .writing-link .arrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--bronze);
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    padding: 64px 0 48px;
+    border-top: 1px solid var(--line);
+  }
+  .contact-grid{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  footer h2{
+    font-size: 2rem;
+    max-width: 16ch;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .contact-links a{
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--slate);
+    transition: color .15s ease;
+  }
+  .contact-links a:hover{ color: var(--navy); }
+  .footer-note{
+    margin-top: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--slate);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px){
+    .contact-grid{ flex-direction: column; align-items: flex-start; }
+    .contact-links{ align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <!-- [EDIT] short name/initials shown in nav -->
+    <a href="#" class="nav-name">Eram Tafsir</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <div class="hero-eyebrow">Applied Economist &amp; Analytics Consultant</div>
+
+    <!-- [EDIT] Headline -->
+    <h1>Turning economic and financial data into decisions that hold up under scrutiny.</h1>
+
+    <!-- [EDIT] Sub-role line -->
+    <p class="hero-role">
+      Economic policy &amp; regulatory research · Banking &amp; credit risk analytics · Macroeconomic modelling · GenAI-enabled research tools
+    </p>
+
+    <!-- [EDIT] Summary paragraph -->
+    <p class="hero-summary">
+      6+ years of experience spanning <strong>Charles River Associates</strong> (Washington D.C.) and
+      <strong>India's Ministry of Commerce &amp; Industry</strong> — working at the intersection of applied
+      econometrics, financial regulation, and government policy. I evaluate ML-based credit risk models against
+      regulatory standards, build macro-financial forecasting models, and translate dense quantitative analysis
+      into clear recommendations for senior decision-makers. Most recently, I've been building
+      <strong>FinSight RAG</strong>, a GenAI-powered tool that applies LLMs and retrieval-augmented generation to
+      economic and financial document research.
+    </p>
+
+    <div class="hero-tags">
+      <span class="tag">Economic Consulting</span>
+      <span class="tag">Banking &amp; Credit Risk Analytics</span>
+      <span class="tag">Macroeconomic Modelling</span>
+      <span class="tag">Policy Research</span>
+      <span class="tag">RAG / LLM Applications</span>
+    </div>
+
+    <div class="hero-links">
+      <!-- [EDIT] swap href for a hosted resume PDF once you upload one -->
+      <a href="#" class="btn btn-primary" id="resumeLink">Download Résumé (PDF)</a>
+      <a href="https://github.com/eramtafsir" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://www.linkedin.com/in/eramtafsir/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://medium.com/@eramtafsir" target="_blank" rel="noopener" class="btn btn-ghost">Medium</a>
+    </div>
+
+    <div class="spark">
+      <div class="spark-item"><b>30+</b>Economic &amp; analytics engagements delivered at CRA</div>
+      <div class="spark-item"><b>42,000+</b>Regulatory compliances eliminated via reform led at MoCI</div>
+      <div class="spark-item"><b>4.0</b>GPA, ranked 1st in class — M.A. Applied Economics</div>
+      <div class="spark-item"><b>2026</b>FinSight RAG — GenAI research tool for economics &amp; finance</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Experience</div>
+    <h2>Professional Experience</h2>
+
+    <!-- [EDIT] Job 1 -->
+    <div class="job">
+      <div class="job-meta">
+        <div class="period">Oct 2023 – Jun 2025</div>
+        Washington D.C., USA
+      </div>
+      <div>
+        <div class="job-title">Associate, Financial Economics Practice</div>
+        <div class="job-org">Charles River Associates</div>
+        <ul>
+          <li>Delivered 30+ economic and analytics engagements for major U.S. financial institutions and regulators — conducting statistical and econometric analysis on large-scale lending datasets to assess regulatory policy risk in credit underwriting and pricing.</li>
+          <li>Independently evaluated AI/ML-based financial risk models (logistic regression, random forest, XGBoost, LightGBM) — assessing methodology, data integrity, and stability against regulatory standards, and communicating trade-offs to non-technical stakeholders.</li>
+          <li>Built Python and Stata workflows to process multi-million-record loan-level datasets — running EDA, feature analysis, and statistical testing, and translating findings into client reports and executive presentations.</li>
+          <li>Applied geospatial analytics (ArcGIS Pro) to examine lending concentration patterns and assess fair lending / redlining risk, benchmarking institution-level data against peer portfolios.</li>
+          <li>Led peer review and QA across project teams, mentoring junior analysts on methodology and ensuring accuracy and reproducibility before client delivery.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- [EDIT] Job 2 -->
+    <div class="job">
+      <div class="job-meta">
+        <div class="period">Sep 2019 – Jun 2022</div>
+        New Delhi, India
+      </div>
+      <div>
+        <div class="job-title">Young Professional, Economic Policy Analysis</div>
+        <div class="job-org">Ministry of Commerce &amp; Industry, Government of India</div>
+        <ul>
+          <li>Led macroeconomic modelling and econometric analysis — building OLS, panel data, and VAR forecasting models in Python and Stata to quantify policy impacts and assess economic trends for Minister-level decision-makers.</li>
+          <li>Led the Ease of Doing Business regulatory reform initiative — analyzing the economic impact of compliance burdens and coordinating reform across central and state ministries, eliminating 42,000+ regulatory compliances.</li>
+          <li>Managed the Import Monitoring Cell, producing monthly executive briefings on trade flows, sectoral risks, and market dynamics for the Commerce Minister.</li>
+          <li>Led the Global Competitiveness Index workstream — benchmarking national economic indicators against international peers and presenting recommendations to senior government advisors.</li>
+          <li>Designed a centralized trade analytics database covering 90% of national import flows, automating pipelines and reducing manual reporting effort by 500+ hours per year.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- [EDIT] Job 3 -->
+    <div class="job">
+      <div class="job-meta">
+        <div class="period">Jan 2019 – May 2019</div>
+        New Delhi, India
+      </div>
+      <div>
+        <div class="job-title">Trainee Sub-Editor</div>
+        <div class="job-org">The Financial Express</div>
+        <ul>
+          <li>Authored 100+ research-backed articles on macroeconomic policy, financial markets, and regulatory developments — translating complex economic analysis into clear narratives for a broad readership.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- [EDIT] Job 4 -->
+    <div class="job">
+      <div class="job-meta">
+        <div class="period">Aug 2016 – Dec 2017</div>
+        India
+      </div>
+      <div>
+        <div class="job-title">Project Associate</div>
+        <div class="job-org">ALIG Educational &amp; Welfare Society</div>
+        <ul>
+          <li>Conducted data analysis and programme performance evaluation, scaling beneficiary reach from 300 to 1,000+, and producing structured impact reports for government stakeholders.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span> Skills</div>
+    <h2>Core Competencies &amp; Tools</h2>
+
+    <div class="skills-grid">
+      <!-- [EDIT] each block below is a skill category -->
+      <div class="skill-group">
+        <h3>Economics &amp; Policy</h3>
+        <p>Macroeconomic modelling, econometrics, regulatory economics, policy analysis, cost-benefit assessment, macro-financial forecasting, VAR, panel data, OLS.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Banking &amp; Risk Analytics</h3>
+        <p>Model risk &amp; validation, credit risk analytics, fair lending analysis, regulatory compliance, banking analytics, loan-level data analysis.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Data &amp; Analytics</h3>
+        <p>Python (pandas, NumPy, scikit-learn, Statsmodels, XGBoost, LightGBM), SQL, Stata, R — EDA, statistical modelling, ML, data pipelines.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Generative AI</h3>
+        <p>Retrieval-Augmented Generation (RAG), LangChain, OpenAI embeddings, vector databases (Chroma), prompt engineering, semantic search, LLM applications.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>BI &amp; Reporting</h3>
+        <p>Power BI, advanced Excel, PowerPoint — executive dashboards, KPI monitoring, client-ready visualisations, Streamlit, Plotly.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Consulting &amp; Delivery</h3>
+        <p>Client delivery, stakeholder management, executive presentations, report writing, project management, QA &amp; peer review.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Geospatial &amp; Other Tools</h3>
+        <p>ArcGIS Pro (geospatial &amp; market analysis), Matplotlib, Seaborn, GitHub, Visual Studio Code.</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <p>English — Full Professional Proficiency · Hindi — Native · Arabic — Elementary Proficiency.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <!-- [EDIT] AI-interest line -->
+      <p>
+        <strong>Growing focus on AI-enabled research:</strong> I'm building practical experience applying large
+        language models and retrieval pipelines to economics and finance — most recently through
+        <strong>FinSight RAG</strong>, a GenAI tool that lets users query and compare economic, financial, and
+        policy documents through a conversational interface. I'm continuing this through structured coursework
+        (DeepLearning.AI — LangChain &amp; RAG) and ongoing project work.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span> Projects</div>
+    <h2>Quantitative Research Projects</h2>
+
+    <div class="projects">
+      <!-- [EDIT] Project 1 — featured -->
+      <div class="project">
+        <div class="project-head">
+          <div class="project-title">FinSight RAG — GenAI Economic &amp; Financial Research Tool<span class="featured">Featured</span></div>
+          <div class="project-year">2026</div>
+        </div>
+        <p>
+          A GenAI-powered research tool built with LangChain, OpenAI embeddings, Chroma vector databases, and
+          Streamlit. Lets users upload and query large economic, financial, and policy documents through a
+          conversational interface — with Q&amp;A, executive summarization, multi-document comparison, and key
+          risk identification. Demonstrates practical application of LLMs and RAG pipelines to accelerate
+          economic and financial research workflows.
+        </p>
+        <a class="project-link" href="https://github.com/eramtafsir/finsight-rag" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <!-- [EDIT] Project 2 -->
+      <div class="project">
+        <div class="project-head">
+          <div class="project-title">Corporate Bankruptcy Prediction — ML Classification &amp; Economic Risk</div>
+          <div class="project-year">2023</div>
+        </div>
+        <p>
+          Built and evaluated supervised ML classification models (logistic regression, decision trees, random
+          forest, SVM) on corporate financial data to predict economic distress — applying cross-validation and
+          hyperparameter tuning, with findings translated into structured economic risk insights.
+        </p>
+        <a class="project-link" href="https://github.com/eramtafsir/Bankruptycy-Prediction-using-Machine-Learning-Algorithms" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <!-- [EDIT] Project 3 -->
+      <div class="project">
+        <div class="project-head">
+          <div class="project-title">ETF Market Forecasting — VAR Modelling &amp; Portfolio Optimization</div>
+          <div class="project-year">2023</div>
+        </div>
+        <p>
+          Developed Vector Autoregressive (VAR) time-series models to forecast ETF returns across U.S. financial
+          markets and applied quantitative portfolio optimization — demonstrating end-to-end macro-financial
+          modelling and research production capability.
+        </p>
+        <a class="project-link" href="https://github.com/eramtafsir/Capstone-ETF-Portfolio-forecasting-optimization" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span> Education</div>
+    <h2>Education</h2>
+
+    <div class="edu-grid">
+      <!-- [EDIT] Education items -->
+      <div class="edu-item">
+        <div>
+          <div class="edu-name">Washington State University, USA</div>
+          <div class="edu-degree">Master of Applied Economics</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="edu-honor">GPA 4.0 — Ranked 1st in Class</span>
+          <span class="edu-year">2023</span>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-name">Jamia Millia Islamia, India</div>
+          <div class="edu-degree">Master of Arts, Economics — First Division</div>
+        </div>
+        <span class="edu-year">2016</span>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-name">University of Delhi, India</div>
+          <div class="edu-degree">Bachelor of Arts, Economics — First Division</div>
+        </div>
+        <span class="edu-year">2014</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRITING ============ -->
+<section id="writing">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span> Writing</div>
+    <h2>Articles &amp; Publications</h2>
+
+    <!-- [EDIT] Add/remove writing links here. Point hrefs to your actual Medium posts. -->
+    <a class="writing-link" href="https://medium.com/@eramtafsir" target="_blank" rel="noopener">
+      <span class="wt">Latest essays on AI, economics, and financial research — on Medium</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="writing-link" href="https://www.financialexpress.com/author/eram-tafsir/" target="_blank" rel="noopener">
+      <span class="wt">100+ published articles on macroeconomic policy &amp; financial markets — The Financial Express</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <!-- [EDIT] Contact heading -->
+      <h2>Open to roles in economic consulting, banking analytics, and policy research — Dubai &amp; India.</h2>
+      <div class="contact-links">
+        <!-- [EDIT] contact details -->
+        <a href="mailto:eramtafsir@gmail.com">eramtafsir@gmail.com</a>
+        <a href="tel:+971555424018">+971 55 542 4018</a>
+        <a href="https://www.linkedin.com/in/eramtafsir/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/eramtafsir" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://medium.com/@eramtafsir" target="_blank" rel="noopener">Medium ↗</a>
+      </div>
+    </div>
+    <div class="footer-note">© 2026 Eram Tafsir · Built with care, hosted with intention.</div>
+  </div>
+</footer>
+
+</body>
+</html>
